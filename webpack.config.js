@@ -1,10 +1,10 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const devMode = process.env.NODE_ENV !== "production";
-
+const webpack = require('webpack');
 module.exports = {
   entry: {
-    page_editor: "./src/index.jsx",
+    index: "./src/index.jsx",
     styles: "./src/style_inc.js"
   },
 
