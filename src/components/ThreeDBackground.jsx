@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
-import ThreeScene from './ThreeScene';
+import LandingPageScene from './LandingPageScene';
 class ThreeDBackground extends React.Component{
     constructor(props){
         super(props);
-        this.scene = new ThreeScene({
+        this.scene = new LandingPageScene({
             height: 400,
             width: 400
         });
@@ -16,6 +16,7 @@ class ThreeDBackground extends React.Component{
      */
     componentDidMount(){
         this.scene.insertStage("three-stage");
+        this.scene.loadObjectFromFile("sword.obj");
         this.scene.render();
     }
 
