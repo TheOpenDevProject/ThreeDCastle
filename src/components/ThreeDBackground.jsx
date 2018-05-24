@@ -16,12 +16,13 @@ class ThreeDBackground extends React.Component{
      */
     componentDidMount(){
         this.scene.insertStage("three-stage");
-        this.scene.loadObjectFromFile("sword.obj");
+        this.scene.loadObjectFromFile("Sample_Ship.obj");
         this.scene.render();
+        
     }
 
 
-    /**
+    /** 
      * Most of the time we will bypass ReactJS for perfomance reasons and rely only on ThreeJS
      */
     render(){
