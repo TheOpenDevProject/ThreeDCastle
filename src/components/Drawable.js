@@ -1,41 +1,52 @@
 import * as THREE from 'three';
 import * as OBJLoader from 'three-obj-loader';
 
-class Drawable{
-    constructor(){
+class Drawable {
+    constructor() {
         this._sceneGroup = {};
         this.objLoader = new THREE.OBJLoader();
     }
 
-  /**
-   * 
-   * @param {String} path 
-   * @param {int} {rx,ry} 
-   * @param {Callback} onError 
-   */
-    loadTextureFromFile(path, {rx,ry}, onError){
-        const texture = new THREE.TextureLoader().load(path);
-        texture.wrapS = THREE.RepeatWrapping;
-        texture.wrapT = THREE.RepeatWrapping;
-        texture.repeat.set(rx, ry);
-        return texture;
+    /**
+     * 
+     * @param {String} path 
+     * @param {int} {rx,ry} 
+     * @param {Callback} onError 
+     */
+    loadTextureFromFile(path, {
+        rx,
+        ry
+    }, onError) {
+        try {
+            const texture = new THREE.TextureLoader().load(path);
+            texture.wrapS = THREE.RepeatWrapping;
+            texture.wrapT = THREE.RepeatWrapping;
+            texture.repeat.set(rx, ry);
+            return texture;
+        } catch (e) {
+            onError(e);
+        }
     }
 
-    bindTexture(objName, texture){
-        this._sceneGroup.traverse(c_object =>  {
-            if(c_object instanceof THREE.Mesh){
-                if(c_object.name === objName){
-                    c_object.material.map = texture;
+    bindTexture(objName, texture, onError) {
+        try {
+            this._sceneGroup.traverse(c_object => {
+                if (c_object instanceof THREE.Mesh) {
+                    if (c_object.name === objName) {
+                        c_object.material.map = texture;
+                    }
                 }
-            }
-        })
+            })
+        } catch (e) {
+            onError(e);
+        }   
     }
 
     /**
      * @description returns the drawable items in the Object Model.
      * @example myScene.add(MyDrawable.draw());
      */
-    draw(){
+    draw() {
         return this._sceneGroup;
     }
 
@@ -43,7 +54,7 @@ class Drawable{
      * @param {String} path
      * @description Load our OBJ model from a file
      */
-    loadFromFile(path){
+    loadFromFile(path) {
         this.objLoader.load(path,
             v => {
                 this._sceneGroup = v;
@@ -55,6 +66,10 @@ class Drawable{
                 console.log(no.error);
             }
         )
+    }
+
+    animate() {
+        throw new Error("animate() NotImplementedException");
     }
 }
 
