@@ -12,7 +12,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="stage">
-        <AnimatedTyper Message="Eat More Ramen, It's Good For You!."/>
+        <AnimatedTyper  debugMode={false} Message="Eat More Ramen, It's Good For You!."/>
         <InteractiveScene/>
       </div>
     );
