@@ -13,7 +13,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="stage">
-        <AnimatedTyper Message="Anutha Day Anutha Dolla"/>
+        <AnimatedTyper Message="Anutha Day Anutha Dollar"/>
         <ThreeDBackground/>
       </div>
     );

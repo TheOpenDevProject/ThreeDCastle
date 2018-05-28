@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
-import LandingPageScene from './LandingPageScene';
+import MainScene from './MainScene';
 class ThreeDBackground extends React.Component{
     constructor(props){
         super(props);
-        this.scene = new LandingPageScene({
-            height: 400,
-            width: 400
-        });
+        this.mScene = new MainScene();
     }
 
 
@@ -15,10 +12,11 @@ class ThreeDBackground extends React.Component{
      * We will exit the ReactJS pipeline after this and instead rely on ThreeJS
      */
     componentDidMount(){
-        this.scene.insertStage("three-stage");
-        this.scene.loadObjectFromFile("Sample_Ship.obj");
-        this.scene.render();
-        
+        this.mScene.insertStage("three-stage");
+        console.log(this.mScene.getDebugInfo());
+        this.mScene.render(() => {
+            console.log("Scene Should Be Rendering");
+        });
     }
 
 

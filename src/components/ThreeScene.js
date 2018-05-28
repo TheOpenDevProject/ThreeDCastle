@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import * as OBJLoader from 'three-obj-loader';
 import OrbitControls from 'orbit-controls-es6';
+import { callbackify } from 'util';
 OBJLoader(THREE);
 export default class ThreeScene {
     constructor(size) {
@@ -8,7 +9,7 @@ export default class ThreeScene {
         this.scene = new THREE.Scene();
         this.size = size;
         this.camera = new THREE.PerspectiveCamera(75, this.size.height / this.size.height, 0.1, 3000);
-        this.threeRenderer = new THREE.WebGLRenderer({alpha: false, antialias:true});
+        this.threeRenderer = new THREE.WebGLRenderer({alpha: true, antialias:true});
         this.objLoader = new THREE.OBJLoader();
         this.controls = new OrbitControls(this.camera);
 
@@ -89,10 +90,17 @@ export default class ThreeScene {
     }
 
     setBackgroundColor(hexCode) {
-        this.threeRenderer.setClearColor(0x444444,0);
+        this.threeRenderer.setClearColor(hexCode,0);
+    }
+
+    getDebugInfo(){
+        return {
+            objects_loaded: this.scene.children
+        };
     }
 
     render(updateCallback = () => {}) {
+        updateCallback();
         const x = () => {
             requestAnimationFrame(f => {
                // this.camera.position.x +=0.1;
@@ -107,7 +115,12 @@ export default class ThreeScene {
     }
 
     addObjectToScene(meshObject) {
-        this.scene.add(meshObject);
+        if(meshObject instanceof THREE.Object3D){
+            this.scene.add(meshObject);
+        }else{
+            throw Error("addObjectToScene::Error | meshObject => Not An Instance Of THREE.Object3D");
+        }
+        
     }
 
     insertStage(parentId) {

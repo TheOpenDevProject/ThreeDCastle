@@ -8,7 +8,6 @@ class Drawable {
     }
 
     /**
-     * 
      * @param {String} path 
      * @param {int} {rx,ry} 
      * @param {Callback} onError 
@@ -39,7 +38,7 @@ class Drawable {
             })
         } catch (e) {
             onError(e);
-        }   
+        }
     }
 
     /**
@@ -55,17 +54,20 @@ class Drawable {
      * @description Load our OBJ model from a file
      */
     loadFromFile(path) {
-        this.objLoader.load(path,
-            v => {
-                this._sceneGroup = v;
-            },
-            ldrState => {
-                console.log(ldrState.loaded / ldrState.total * 100 + "%");
-            },
-            no => {
-                console.log(no.error);
-            }
-        )
+        const deferedLoader = new Promise((resolve, reject) => {
+            this.objLoader.load(path,
+                v => {
+                    this._sceneGroup = v;
+                },
+                ldrState => {
+                    console.log(ldrState.loaded / ldrState.total * 100 + "%");
+                },
+                no => {
+                    console.log(no.error);
+                }
+            )
+        })
+        return deferedLoader;
     }
 
     animate() {
