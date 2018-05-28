@@ -2,9 +2,8 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
 
 //Custom React Components
-import './components/AnimatedTyper.jsx';
 import AnimatedTyper from './components/AnimatedTyper.jsx';
-import ThreeDBackground from './components/ThreeDBackground.jsx';
+import InteractiveScene from './components/InteractiveScene.jsx';
 
 /**
  * Main React Entry Pint
@@ -13,8 +12,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="stage">
-        <AnimatedTyper Message="Anutha Day Anutha Dollar"/>
-        <ThreeDBackground/>
+        <AnimatedTyper Message="Eat More Ramen, It's Good For You!."/>
+        <InteractiveScene/>
       </div>
     );
   }
