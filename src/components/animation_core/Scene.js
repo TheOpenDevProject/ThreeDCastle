@@ -38,8 +38,18 @@ class BaseScene {
             TJS_CAMERA: {},
             TJS_RENDERER: {},
             TJS_SCENE: {},
-            TJS_CONTROLS: {}
+            TJS_CONTROLS: {},
+            TJS_RENDER_QUEUE: []
         };
+    }
+
+    addSceneLighting({
+        color,
+        intensity
+    }) {
+        const ambientLight = new THREE.AmbientLight(color);
+        ambientLight.intensity = intensity;
+        this._tjsCore.TJS_SCENE.add(ambientLight);
     }
 
     /**
@@ -60,23 +70,43 @@ class BaseScene {
     _initScene() {
         this._tjsCore.TJS_SCENE = new THREE.Scene();
     }
+
+    _initBackground() {
+        this._tjsCore.TJS_RENDERER.setClearColor(this._defaultBackgroundColor);
+    }
+
+    /**
+     * Insert an object to be rendered into our queue.
+     */
+    insertObject(drawableObject) {
+        if (drawableObject instanceof THREE.Object3D) {
+            this._tjsCore.TJS_RENDER_QUEUE.push(drawableObject);
+            this._tjsCore.TJS_SCENE.add(drawableObject);
+        } else {
+            throw Error(`Invalid3DObject Exception => ${drawableObject}`);
+        }
+    }
     /**
      * Do all the trickery and binding to setup WebGL and DOM related stuffz
      */
     initScene() {
-        //Setup our renderer and camera
-        this._initRenderer();
-        this._initCamera();
-        this._initScene();
-        this._initControls();
-        //Insert ThreeJS's DOM Node
-        if (this._parentId !== null) {
-            const parentElement = document.getElementById(this._parentId);
-            parentElement.appendChild(this._tjsCore.TJS_RENDERER.domElement);
-        } else {
-            throw Error("Something went very wrong to get to this point...");
-        }
-
+        const sceneCreated = new Promise((res, rej) => {
+            //Setup our renderer and camera
+            this._initRenderer();
+            this._initCamera();
+            this._initScene();
+            this._initControls();
+            this._initBackground();
+            //Insert ThreeJS's DOM Node
+            if (this._parentId !== null) {
+                const parentElement = document.getElementById(this._parentId);
+                parentElement.appendChild(this._tjsCore.TJS_RENDERER.domElement);
+                return this;
+            } else {
+                throw Error("Something went very wrong to get to this point...");
+            }
+        })
+        return sceneCreated;
     }
 
     _initControls() {
@@ -100,8 +130,20 @@ class BaseScene {
         const genRecFnc = () => {
             requestAnimationFrame(tick => {
                 this.drawScene(); //Call the renderer each tick.
-
+                this.updateControls();
+                genRecFnc();
             });
+        }
+        genRecFnc();
+
+    }
+
+    updateControls() {
+        if (this._tjsCore.TJS_CONTROLS instanceof OrbitControls) {
+            this._tjsCore.TJS_CAMERA.position.x += 0.1;
+            this._tjsCore.TJS_CAMERA.position.y += 0.1
+            this._tjsCore.TJS_CONTROLS.update();
+
         }
     }
 
