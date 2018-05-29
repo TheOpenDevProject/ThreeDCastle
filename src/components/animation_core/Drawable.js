@@ -1,5 +1,5 @@
-import * as OBJLoader from 'three-obj-loader';
-import * as THREE from 'three';
+import * as OBJLoader from "three-obj-loader";
+import * as THREE from "three";
 OBJLoader(THREE);
 class Drawable {
 
@@ -17,6 +17,9 @@ class Drawable {
             this._objectLoader.load(fileName, done => {
                     done.traverse(child => {
                         if (child instanceof THREE.Mesh) {
+                            //geometry
+                            child.position.y = -60
+                       
                             const texture = new THREE.TextureLoader().load(textureName);
                             texture.wrapS = THREE.RepeatWrapping;
                             texture.wrapT = THREE.RepeatWrapping;
@@ -47,7 +50,7 @@ class Drawable {
         /* The Cube */
 
         //We create a boxGeometry with three parameters: width, height and depth
-        const geometry = new THREE.BoxGeometry(200, 200, 75);
+        const geometry = new THREE.BoxGeometry(1, 1, 1);
 
         //We create a texture for our cube, here it's only a red texture
         const texture = new THREE.MeshLambertMaterial({
@@ -56,10 +59,6 @@ class Drawable {
 
         //We create the Mesh which contains our geometry (the cube) and its texture
         const cube = new THREE.Mesh(geometry, texture);
-        geometry.center(cube.position);
-        cube.position.setX(300);
-        cube.position.setY(300);
-        cube.position.setZ(30);
 
         return cube;
     }

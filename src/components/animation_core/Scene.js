@@ -64,7 +64,10 @@ class BaseScene {
     }
 
     _initCamera() {
-        this._tjsCore.TJS_CAMERA = new THREE.PerspectiveCamera(75, this._sceneWidth / this._sceneHeight, 0.1, 3000);
+        this._tjsCore.TJS_CAMERA = new THREE.PerspectiveCamera(75, this._sceneWidth / this._sceneHeight, 0.1, 200);
+        this._tjsCore.TJS_CAMERA.position.x = 4;
+        this._tjsCore.TJS_CAMERA.position.y = 5;
+        this._tjsCore.TJS_CAMERA.position.z = 0;
     }
 
     _initScene() {
@@ -140,9 +143,8 @@ class BaseScene {
 
     updateControls() {
         if (this._tjsCore.TJS_CONTROLS instanceof OrbitControls) {
-            this._tjsCore.TJS_CAMERA.position.x += 0.1;
-            this._tjsCore.TJS_CAMERA.position.y += 0.1
-            this._tjsCore.TJS_CONTROLS.update();
+            console.log(this._tjsCore.TJS_CAMERA.position);
+                 this._tjsCore.TJS_CONTROLS.update();
 
         }
     }

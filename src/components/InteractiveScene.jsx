@@ -20,7 +20,6 @@ class InteractiveScene extends React.Component {
              * Other stuff
              */
         });
-        this._chaosScene.insertObject(Drawable.getDebugMesh());
         this._chaosScene.addSceneLighting({
             color: 0xffffff,
             intensity: 1

@@ -1,7 +1,8 @@
-import Scene from './animation_core/Scene';
-import Drawable from './animation_core/Drawable';
-class ChaosScene extends Scene{
-    constructor(){
+import Scene from "./animation_core/Scene";
+import Drawable from "./animation_core/Drawable";
+
+class ChaosScene extends Scene {
+    constructor() {
         super({
             parentId: "interactive-scene",
             width: 800,
@@ -11,15 +12,16 @@ class ChaosScene extends Scene{
 
         const test = new Drawable();
 
-        test.loadFromFile({fileName: "models/de_airstrip.obj", textureName: "models/de_airstrip.mtl"}).then(retVal => {
+        test.loadFromFile({
+            fileName: "models/de_airstrip.obj",
+            textureName: "models/de_airstrip.mtl"
+        }).then(retVal => {
             this.insertObject(retVal);
         }).catch(err => {
             console.log(err);
         });
-        
+
     }
-
-
 
 }
 
