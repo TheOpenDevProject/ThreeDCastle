@@ -12,17 +12,16 @@ class ChaosScene extends Scene {
 
         const test = new Drawable();
 
-        test.loadFromFile({
+        test.loadFromFileWithMTL({
             fileName: "ferrari/ferrari-f1-race-car.obj",
             textureName: "ferrari-f1-race-car.mtl",
-            basePath: "ferrari/",
-            textureType: "mtl"
-        }).then((value) => {
-            console.log(value);
-            this.insertObject(value);
-        }).catch((err) => {
+            basePath: "ferrari/"
+            
+        }).then(loadedDrawable => {
+            this.insertObject(loadedDrawable);
+        }).catch(err => {
             console.log(err);
-        });
+        })
 
     }
 
