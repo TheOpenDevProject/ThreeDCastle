@@ -5,64 +5,8 @@ OBJLoader(THREE);
 class Drawable {
 
     constructor() {
-        this._loadedObject = {};
-        this._objectLoader = new THREE.OBJLoader();
-        this._loadingManager = new THREE.LoadingManager();
 
     }
-
-
-    /**
-     * 
-     * @param {String} fileName 
-     * @param {String} textureName
-     */
-    loadFromFile({
-        fileName,
-        textureName,
-        basePath,
-        textureType
-    }) {
-        const promise = new Promise((res, rej) => {
-            this._objectLoader.load(fileName, done => {
-                    let texture = {};
-                    if (textureType === "mtl") {
-                        const matLoader = new MTLLoader(this._loadingManager);
-                        matLoader.setPath(basePath);
-
-                        matLoader.load(textureName, (mats) => {
-                            mats.preload();
-                            this._objectLoader.setMaterials(mats);
-                            done.traverse(child => {
-                                if (child instanceof THREE.Mesh) {
-                                    child.material.map()
-                                }
-                            });
-                        });
-                    }
-
-                    //Should be the same thing but its not always. THANKS BROWSER DEVS!!.
-                    if (done !== undefined || done !== null) {
-
-                        res(done);
-                    } else {
-                        rej("Error when loading texture or model");
-                    }
-                },
-                ldrState => {
-                    console.log(`Object is ${ldrState.loaded / ldrState.total * 100}% Loaded`);
-                },
-                failed => {
-                    console.log(`Drawable::loadFromFile::Error ${failed}`);
-                }
-            );
-
-
-        });
-
-        return promise;
-    }
-
 
     loadFromFileWithMTL({
         fileName,
