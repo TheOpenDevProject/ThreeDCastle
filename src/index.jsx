@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
-
+import {
+  HashRouter as Router,
+  Route,
+  Link
+} from "react-router-dom";
 //Custom React Components
 import AnimatedTyper from './components/AnimatedTyper.jsx';
 import InteractiveScene from './components/InteractiveScene.jsx';
@@ -12,17 +16,25 @@ class App extends React.Component {
   render() {
     return (
       <div className="stage">
-        <AnimatedTyper  debugMode={false} Message="Eat More Ramen, It's Good For You!."/>
-        <InteractiveScene/>
+
+        <Router>
+          <Route path="/about" render={() => {
+            return (
+              <AnimatedTyper debugMode={false} Message="Eat More Ranem Its Good For You!" />
+            );
+          }} />
+        </Router>
+
+
       </div>
     );
   }
 }
 
 
-(function(){
-    document.addEventListener("DOMContentLoaded",() => {
-        const reactStage = document.getElementById("root");
-        ReactDOM.render(<App/>, reactStage);
-    })
+(function () {
+  document.addEventListener("DOMContentLoaded", () => {
+    const reactStage = document.getElementById("root");
+    ReactDOM.render(<App />, reactStage);
+  })
 })();

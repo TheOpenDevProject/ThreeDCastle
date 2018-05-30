@@ -14,9 +14,9 @@ class ChaosScene extends Scene {
         const test = new Drawable();
 
         test.loadFromFileWithMTL({
-            fileName: "ferrari/ferrari-f1-race-car.obj",
-            textureName: "ferrari-f1-race-car.mtl",
-            basePath: "ferrari/"
+            fileName: "planet/Mars_2K.obj",
+            textureName: "Mars_2K.obj",
+            basePath: "planet/"
 
         }).then(loadedDrawable => {
             this.insertObject(loadedDrawable);

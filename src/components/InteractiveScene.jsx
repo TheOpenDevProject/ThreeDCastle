@@ -20,10 +20,6 @@ class InteractiveScene extends React.Component {
              * Other stuff
              */
         });
-        this._chaosScene.addSceneLighting({
-            color: 0xffffff,
-            intensity: 0.2
-        })
         this._chaosScene.pollEvents();
     }
 
