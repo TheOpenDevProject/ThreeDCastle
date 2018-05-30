@@ -137,13 +137,15 @@ class BaseScene {
     pollEvents() {
         const genRecFnc = () => {
             requestAnimationFrame(tick => {
+              
                 this.drawScene(); //Call the renderer each tick.
                 this.updateControls();
                 genRecFnc();
             });
         }
         genRecFnc();
-
+        //Debug Mode
+        
     }
 
     updateControls() {

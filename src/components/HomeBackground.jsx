@@ -10,6 +10,7 @@ class HomeBackground extends React.Component{
 
     componentDidMount(){
         this._scene.initScene().then(() => {
+            this._scene.doSetup();
             this._scene.pollEvents();
         });
 

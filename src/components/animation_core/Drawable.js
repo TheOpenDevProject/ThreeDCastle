@@ -72,7 +72,7 @@ class Drawable {
 
         //We create the Mesh which contains our geometry (the cube) and its texture
         const cube = new THREE.Mesh(geometry, texture);
-
+        
         return cube;
     }
 }
