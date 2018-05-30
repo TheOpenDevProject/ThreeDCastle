@@ -117,6 +117,14 @@ class BaseScene {
         return sceneCreated;
     }
 
+    rotateCamera(speed){
+        //Ungodly starfield zoom hack xD. Will make this more generic soon        
+        if(this._tjsCore.TJS_CAMERA.position.x < 528){
+            this._tjsCore.TJS_CAMERA.position.x += 0.1;
+        }
+        
+    }
+
     _initControls() {
         if (this._enableOrbitControls === true) {
             this._tjsCore.TJS_CONTROLS = new OrbitControls(this._tjsCore.TJS_CAMERA);
@@ -137,8 +145,9 @@ class BaseScene {
     pollEvents() {
         const genRecFnc = () => {
             requestAnimationFrame(tick => {
-              
+                
                 this.drawScene(); //Call the renderer each tick.
+                this.rotateCamera();
                 this.updateControls();
                 genRecFnc();
             });

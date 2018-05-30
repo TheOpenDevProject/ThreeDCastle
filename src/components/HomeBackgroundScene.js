@@ -17,6 +17,7 @@ class HomeBackgroundScene extends BaseScene {
     doSetup(){
         this.insertObject(Drawable.getDebugMesh());
         const x = new Stars().generateStarfield().then(stars => {
+            console.log(stars);
             this.insertObject(stars);
         });
         this.addSceneLighting({color: 0xffffff,intensity: 1});
