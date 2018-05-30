@@ -13,11 +13,14 @@ class ChaosScene extends Scene {
         const test = new Drawable();
 
         test.loadFromFile({
-            fileName: "models/de_airstrip.obj",
-            textureName: "models/de_airstrip.mtl"
-        }).then(retVal => {
-            this.insertObject(retVal);
-        }).catch(err => {
+            fileName: "ferrari/ferrari-f1-race-car.obj",
+            textureName: "ferrari-f1-race-car.mtl",
+            basePath: "ferrari/",
+            textureType: "mtl"
+        }).then((value) => {
+            console.log(value);
+            this.insertObject(value);
+        }).catch((err) => {
             console.log(err);
         });
 

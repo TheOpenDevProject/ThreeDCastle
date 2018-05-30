@@ -29,7 +29,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name].css"
     }),
-    new webpack.IgnorePlugin(/locale/, /moment$/),
-    
+    new webpack.IgnorePlugin(/locale/, /moment$/)
   ]
 };

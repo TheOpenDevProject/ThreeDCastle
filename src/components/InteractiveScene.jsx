@@ -22,7 +22,7 @@ class InteractiveScene extends React.Component {
         });
         this._chaosScene.addSceneLighting({
             color: 0xffffff,
-            intensity: 1
+            intensity: 1.5
         })
         this._chaosScene.pollEvents();
     }

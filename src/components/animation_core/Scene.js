@@ -143,7 +143,7 @@ class BaseScene {
 
     updateControls() {
         if (this._tjsCore.TJS_CONTROLS instanceof OrbitControls) {
-            console.log(this._tjsCore.TJS_CAMERA.position);
+           
                  this._tjsCore.TJS_CONTROLS.update();
 
         }

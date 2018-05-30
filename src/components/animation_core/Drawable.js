@@ -1,5 +1,6 @@
 import * as OBJLoader from "three-obj-loader";
 import * as THREE from "three";
+import * as MTLLoader from "three-mtl-loader";
 OBJLoader(THREE);
 class Drawable {
 
@@ -9,24 +10,43 @@ class Drawable {
     }
 
 
+    /**
+     * 
+     * @param {String} fileName 
+     * @param {String} textureName
+     */
     loadFromFile({
         fileName,
-        textureName
+        textureName,
+        basePath,
+        textureType
     }) {
         const promise = new Promise((res, rej) => {
             this._objectLoader.load(fileName, done => {
-                    done.traverse(child => {
-                        if (child instanceof THREE.Mesh) {
-                            //geometry
-                            child.position.y = -60
-                       
-                            const texture = new THREE.TextureLoader().load(textureName);
-                            texture.wrapS = THREE.RepeatWrapping;
-                            texture.wrapT = THREE.RepeatWrapping;
-                            texture.repeat.set(1, 1);
-                            child.material.map = texture;
-                        }
-                    });
+                    let texture = {};
+                    if(textureType === "mtl"){
+                        const matLoader = new MTLLoader();
+                        matLoader.setBaseUrl(basePath);
+                        matLoader.setPath(basePath);
+                        
+                        matLoader.load(textureName,(mats) => {
+                            mats.preload();
+                            done.traverse(child => {
+                                if (child instanceof THREE.Mesh) {
+                                    //geometry
+                                    child.material = mats;
+                                }
+                            });
+                        });
+                    }
+
+                    //Should be the same thing but its not always. THANKS BROWSER DEVS!!.
+                    if (done !== undefined || done !== null) {
+                        
+                        res(done);
+                    } else {
+                        rej("Error when loading texture or model");
+                    }
                 },
                 ldrState => {
                     console.log(`Object is ${ldrState.loaded / ldrState.total * 100}% Loaded`);
@@ -36,7 +56,9 @@ class Drawable {
                 }
             );
 
+
         });
+
         return promise;
     }
 
