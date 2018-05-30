@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import {
   HashRouter as Router,
   Route,
-  Link
+  Link,
+  Switch
 } from "react-router-dom";
 //Custom React Components
-import AnimatedTyper from './components/AnimatedTyper.jsx';
-import InteractiveScene from './components/InteractiveScene.jsx';
-
+import Home from "./components/pages/Home.jsx";
+import ContactMe from "./components/pages/ContactMe.jsx";
 /**
  * Main React Entry Pint
  */
@@ -18,11 +18,12 @@ class App extends React.Component {
       <div className="stage">
 
         <Router>
-          <Route path="/about" render={() => {
-            return (
-              <AnimatedTyper debugMode={false} Message="Eat More Ranem Its Good For You!" />
-            );
-          }} />
+          <Switch>
+
+            <Route exact path="/" component={Home} />
+            <Route exact path="/contact" component={ContactMe} />
+
+          </Switch>
         </Router>
 
 

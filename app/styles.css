@@ -1,5 +1,7 @@
 body {
-  background-color: #dd2c00; }
+  background-color: #dd2c00;
+  margin: 0;
+  padding: 0; }
 
 .animated-typer {
   color: #fff;

@@ -64,7 +64,7 @@ class BaseScene {
     }
 
     _initCamera() {
-        this._tjsCore.TJS_CAMERA = new THREE.PerspectiveCamera(75, this._sceneWidth / this._sceneHeight, 0.1, 200);
+        this._tjsCore.TJS_CAMERA = new THREE.PerspectiveCamera(75, this._sceneWidth / this._sceneHeight, 0.1, 2000);
         this._tjsCore.TJS_CAMERA.position.x = 4;
         this._tjsCore.TJS_CAMERA.position.y = 5;
         this._tjsCore.TJS_CAMERA.position.z = 0;
@@ -109,9 +109,9 @@ class BaseScene {
             if (this._parentId !== null) {
                 const parentElement = document.getElementById(this._parentId);
                 parentElement.appendChild(this._tjsCore.TJS_RENDERER.domElement);
-                return this;
+                res()
             } else {
-                throw Error("Something went very wrong to get to this point...");
+                rej("Failed to init scene");
             }
         })
         return sceneCreated;

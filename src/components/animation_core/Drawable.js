@@ -5,8 +5,17 @@ OBJLoader(THREE);
 class Drawable {
 
     constructor() {
-
+        this._drawableElement = undefined;
     }
+
+    getDrawable(){
+        return this._drawableElement;
+    }
+
+    setDrawable(element){
+        this._drawableElement = element;
+    }
+
 
     loadFromFileWithMTL({
         fileName,
