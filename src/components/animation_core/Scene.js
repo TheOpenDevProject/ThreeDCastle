@@ -17,7 +17,7 @@ class BaseScene {
         width = 800,
         height = 800,
         antialias = true,
-        enableTransparency = false,
+        enableTransparency = true,
         defaultBackgroundColor = 0x000000,
         enableOrbitControls = true
     }) {
@@ -75,7 +75,12 @@ class BaseScene {
     }
 
     _initBackground() {
-        this._tjsCore.TJS_RENDERER.setClearColor(this._defaultBackgroundColor);
+        if (this._enableTransparency) {
+            this._tjsCore.TJS_RENDERER.setClearColor(0x000000,0);
+        } else {
+            this._tjsCore.TJS_RENDERER.setClearColor(this._defaultBackgroundColor);
+        }
+
     }
 
     /**
@@ -143,8 +148,8 @@ class BaseScene {
 
     updateControls() {
         if (this._tjsCore.TJS_CONTROLS instanceof OrbitControls) {
-           
-                 this._tjsCore.TJS_CONTROLS.update();
+
+            this._tjsCore.TJS_CONTROLS.update();
 
         }
     }

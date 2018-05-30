@@ -7,7 +7,8 @@ class ChaosScene extends Scene {
             parentId: "interactive-scene",
             width: 800,
             height: 800,
-            defaultBackgroundColor: 0x000
+            defaultBackgroundColor: 0x000,
+            enableTransparency: true
         });
 
         const test = new Drawable();
@@ -16,12 +17,19 @@ class ChaosScene extends Scene {
             fileName: "ferrari/ferrari-f1-race-car.obj",
             textureName: "ferrari-f1-race-car.mtl",
             basePath: "ferrari/"
-            
+
         }).then(loadedDrawable => {
             this.insertObject(loadedDrawable);
+            //Once our scene objects are loaded we can add some environmental changes :D
+            this.addSceneLighting({
+                color: 0xffffff,
+                intensity: 1.3
+            });
+
         }).catch(err => {
             console.log(err);
         })
+
 
     }
 
