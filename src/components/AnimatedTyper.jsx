@@ -56,7 +56,6 @@ class AnimatedTyper extends React.Component {
         return (
             <div className="type-containter">
                 <div className="animated-typer">{this.state.internalMsgState}</div>
-                <span className="blinking-cursor">|</span>
             </div>
         );
     }
