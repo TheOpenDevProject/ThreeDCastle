@@ -1,1 +1,54 @@
-body{background-color:#dd2c00;margin:0;padding:0}.animated-typer{color:#fff;font-size:4em;font-weight:700;font-family:Open Sans}.type-containter{display:inline-flex}.blinking-cursor{font-weight:100;font-size:4em;color:#fff;-webkit-animation:1s blink step-end infinite;-moz-animation:1s blink step-end infinite;-ms-animation:1s blink step-end infinite;-o-animation:1s blink step-end infinite;animation:1s blink step-end infinite}@keyframes "blink"{0%,to{color:transparent}50%{color:#fff}}@-moz-keyframes blink{0%,to{color:transparent}50%{color:#fff}}@-webkit-keyframes "blink"{0%,to{color:transparent}50%{color:#fff}}@-ms-keyframes "blink"{0%,to{color:transparent}50%{color:#fff}}@-o-keyframes "blink"{0%,to{color:transparent}50%{color:#fff}}
+body {
+  background-color: #dd2c00;
+  margin: 0;
+  padding: 0; }
+
+.animated-typer {
+  color: #fff;
+  font-size: 4em;
+  font-weight: bold;
+  font-family: "Open Sans"; }
+
+.type-containter {
+  display: inline-flex; }
+
+.blinking-cursor {
+  font-weight: 100;
+  font-size: 4em;
+  color: #fff;
+  -webkit-animation: 1s blink step-end infinite;
+  -moz-animation: 1s blink step-end infinite;
+  -ms-animation: 1s blink step-end infinite;
+  -o-animation: 1s blink step-end infinite;
+  animation: 1s blink step-end infinite; }
+
+@keyframes "blink" {
+  from, to {
+    color: transparent; }
+  50% {
+    color: white; } }
+
+@-moz-keyframes blink {
+  from, to {
+    color: transparent; }
+  50% {
+    color: white; } }
+
+@-webkit-keyframes "blink" {
+  from, to {
+    color: transparent; }
+  50% {
+    color: white; } }
+
+@-ms-keyframes "blink" {
+  from, to {
+    color: transparent; }
+  50% {
+    color: white; } }
+
+@-o-keyframes "blink" {
+  from, to {
+    color: transparent; }
+  50% {
+    color: white; } }
+

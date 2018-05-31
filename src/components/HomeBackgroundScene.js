@@ -5,8 +5,8 @@ class HomeBackgroundScene extends BaseScene {
     constructor() {
         super({
             parentId: "space-age",
-            width: window.innerWidth,
-            height: window.innerHeight,
+            width: document.documentElement.clientWidth,
+            height: document.documentElement.clientHeight,
             defaultBackgroundColor: 0x000,
             enableTransparency: false
         });
@@ -15,12 +15,12 @@ class HomeBackgroundScene extends BaseScene {
     }
 
     doSetup(){
-        this.insertObject(Drawable.getDebugMesh());
         const x = new Stars().generateStarfield().then(stars => {
             console.log(stars);
-            this.insertObject(stars);
+            this.insertObject(stars.particles);
+            this.insertObject(stars.lineGroup);
         });
-        this.addSceneLighting({color: 0xffffff,intensity: 1});
+        this.addSceneLighting({color: 0xffffff,intensity: 2});
     }
 }
 

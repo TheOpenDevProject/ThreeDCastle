@@ -102,6 +102,7 @@ class BaseScene {
             //Setup our renderer and camera
             this._initRenderer();
             this._initCamera();
+            this._initHandleWindowResize();
             this._initScene();
             this._initControls();
             this._initBackground();
@@ -125,6 +126,16 @@ class BaseScene {
         
     }
 
+
+    _initHandleWindowResize(){
+        //Bind the resize event to our callback :)
+        window.addEventListener("resize", () => {
+            this._tjsCore.TJS_CAMERA.aspect = document.documentElement.clientWidth / document.documentElement.clientHeight;
+            this._tjsCore.TJS_CAMERA.updateProjectionMatrix();
+            this._tjsCore.TJS_RENDERER.setSize(document.documentElement.clientWidth,document.documentElement.clientHeight);
+        },false);
+    }
+
     _initControls() {
         if (this._enableOrbitControls === true) {
             this._tjsCore.TJS_CONTROLS = new OrbitControls(this._tjsCore.TJS_CAMERA);
@@ -145,7 +156,6 @@ class BaseScene {
     pollEvents() {
         const genRecFnc = () => {
             requestAnimationFrame(tick => {
-                
                 this.drawScene(); //Call the renderer each tick.
                 this.rotateCamera();
                 this.updateControls();
