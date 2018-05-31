@@ -48,7 +48,7 @@ class AnimatedTyper extends React.Component {
     }
 
     componentDidMount() {
-        this.animationTimer = setInterval(this.tick, 200);
+        this.animationTimer = setInterval(this.tick, 100);
     }
 
 

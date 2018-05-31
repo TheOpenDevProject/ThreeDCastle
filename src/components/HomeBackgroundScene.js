@@ -18,7 +18,6 @@ class HomeBackgroundScene extends BaseScene {
         const x = new Stars().generateStarfield().then(stars => {
             console.log(stars);
             this.insertObject(stars.particles);
-            this.insertObject(stars.lineGroup);
         });
         this.addSceneLighting({color: 0xffffff,intensity: 2});
     }

@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 export default class StaticMenuBar extends Component {
     constructor(props) {
         super(props);
-        this.state = {navLinks: props.navLinks};
+        this.state = {navLinks: props.navLinks, activeLink: window.location.hash};
+
 
     }
     render() {
@@ -12,6 +13,8 @@ export default class StaticMenuBar extends Component {
                window.location.hash = item.hashref;
            }}>{item.text}</li>
         });
+
+        
         return (
             <nav className="static-nav">
                 <ul>
