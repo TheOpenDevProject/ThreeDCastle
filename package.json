@@ -9,6 +9,7 @@
   "dependencies": {
     "@material-ui/core": "^1.0.0",
     "@material-ui/icons": "^1.0.0",
+    "@octokit/rest": "^15.8.1",
     "axios": "^0.18.0",
     "codemirror": "^5.37.0",
     "orbit-controls-es6": "^1.0.12",

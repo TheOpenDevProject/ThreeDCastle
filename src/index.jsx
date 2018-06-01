@@ -19,11 +19,11 @@ class App extends React.Component {
       <div className="stage">
         <div className="full-width-flex" id="home-container">
         <StaticMenuBar navLinks={[
-                    {hashref: "/", text: "Home"},
-                    {hashref: "/my-work", text: "My Work"},
-                    {hashref: "/ytwall", text: "My YouTube"},
-                    {hashref: "/contact", text: "Contact Me"},
-                    {hashref: "/about-me", text: "About Me"},
+                    {hashref: "/", text: "Home", key: 1},
+                    {hashref: "/my-work", text: "My Work", key: 2},
+                    {hashref: "/ytwall", text: "My YouTube", key: 3},
+                    {hashref: "/contact", text: "Contact Me", key: 4},
+                    {hashref: "/about-me", text: "About Me", key: 5},
                 ]}/>
 
           <Router>
