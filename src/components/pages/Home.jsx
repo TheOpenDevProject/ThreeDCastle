@@ -17,7 +17,7 @@ export default class Home extends Component {
     render() {
         return ([
             <LastCheckinCard/>,
-            <AnimatedTyper debugMode={true} Message="Did the universe start with a Hello World?" />,
+            <AnimatedTyper debugMode={false} Message="Did the universe start with a Hello World?" />,
             <HomeBackground />]);
     }
 }

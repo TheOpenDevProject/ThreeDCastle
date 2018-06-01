@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 @import "_reset.scss";
+
 .full-width-flex{
   display: flex;
   flex-direction: column;
@@ -121,4 +122,10 @@ body {
   50% {
     color: white;
   }
+}
+
+//More stuff to be cleaned up
+.small-mdl-card{
+  background-color: #fff;
+  padding:0.4em;
 }

@@ -128,3 +128,7 @@ body {
   50% {
     color: white; } }
 
+.small-mdl-card {
+  background-color: #fff;
+  padding: 0.4em; }
+
