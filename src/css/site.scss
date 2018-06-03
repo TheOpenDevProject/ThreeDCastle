@@ -1,131 +1,27 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
 @import "_reset.scss";
+/**
+* =================
+*  Custom Modules
+* =================
+*/
+@import "./canvas.scss";
+@import "./animated_typer.scss";
+@import "./nav.scss";
+@import "./github_card.scss";
 
-.full-width-flex{
+.full-width-flex {
   display: flex;
   flex-direction: column;
 }
 
-#space-age {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1; //HACK HACK HACK HAAAAAAAAAACK
-}
-
-.static-nav{
-  color:#fff;
-  font-family: 'Roboto', sans-serif;
-  ul{
-    list-style: none;
-    display: flex;
-    li{
-      flex: 1 auto;
-      text-align: center;
-      padding: 1em 0;
-      cursor: pointer;
-      &:hover{
-        border-bottom: solid yellow 2px;
-      }
-      a{
-        
-        text-decoration: none;
-        color:#fff;
-      }
-    }
-  }
-}
-
-
-
 body {
   margin: 0;
   padding: 0;
- 
 }
 
-.animated-typer {
-  color: #fff;
-  font-size: 4em;
-  font-weight: bold;
-  font-family: 'Roboto', sans-serif;
-  text-align: center;
-}
-
-.type-containter {
-  background-color: rgba($color: #fff, $alpha: 0.3);
-  padding: 2em 0;
-  display: inline-flex;
-  flex-direction: row-reverse;
-  width: 100%;
+.card-container{
+  display: flex;
+  width:100%;
   justify-content: center;
-  margin-top:25em;
-
-}
-
-.blinking-cursor {
-  font-weight: 100;
-  font-size: 4em;
-  color: #fff;
-  -webkit-animation: 1s blink step-end infinite;
-  -moz-animation: 1s blink step-end infinite;
-  -ms-animation: 1s blink step-end infinite;
-  -o-animation: 1s blink step-end infinite;
-  animation: 1s blink step-end infinite;
-}
-
-@keyframes "blink" {
-  from,
-  to {
-    color: transparent;
-  }
-  50% {
-    color: white;
-  }
-}
-
-@-moz-keyframes blink {
-  from,
-  to {
-    color: transparent;
-  }
-  50% {
-    color: white;
-  }
-}
-
-@-webkit-keyframes "blink" {
-  from,
-  to {
-    color: transparent;
-  }
-  50% {
-    color: white;
-  }
-}
-
-@-ms-keyframes "blink" {
-  from,
-  to {
-    color: transparent;
-  }
-  50% {
-    color: white;
-  }
-}
-
-@-o-keyframes "blink" {
-  from,
-  to {
-    color: transparent;
-  }
-  50% {
-    color: white;
-  }
-}
-
-//More stuff to be cleaned up
-.small-mdl-card{
-  background-color: #fff;
-  padding:0.4em;
 }
