@@ -1,5 +1,5 @@
 .small-mdl-card {
-    width: 20em;
+    width: 35;;
     height: 5em;
     background-color: #fff;
     padding: 0.5em;
@@ -23,6 +23,13 @@
                     color: #fff;
                     font-weight: 700;
                 }
+            }
+        }
+        .action-link {
+            margin-top:0.4em;
+            a {
+                text-decoration: none;
+                color: rgba($color: #000000, $alpha: 0.4)
             }
         }
         .action-user-icon {

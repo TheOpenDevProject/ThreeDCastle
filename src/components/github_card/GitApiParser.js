@@ -5,11 +5,18 @@ class GitApiParser {
     }
 
     processorForIssueEvent(data) {
-        
+
     }
 
     processorForPushEvent(data) {
-
+        const eventData = {
+            type: data.type,
+            currentIssueLabel: "New Commit",
+            currentIcon: "fas fa-arrow-up",
+            actionLink: `https://github.com/${data.repo.name}/commit/#${data.payload.head}`,
+            actionText: `${data.repo.name} => #${data.payload.head.slice(0,5)}`
+        };
+        return eventData;
     }
 
     processForCreateEvent(data) {
@@ -36,9 +43,6 @@ class GitApiParser {
         //Setup our structure and fallback defaults
         const objectForProcessing = data.data[0];
         const coreObject = {
-            type: "None",
-            currentIssueLabel: "Loading....",
-            currentIcon: "fas fa-question-circle",
             userInfo: {
                 ...objectForProcessing.actor
             }
@@ -53,7 +57,7 @@ class GitApiParser {
         return finalObject;
     }
 
-    static getDefaults(){
+    static getDefaults() {
         return {
             type: "None",
             currentIssueLabel: "Loading....",

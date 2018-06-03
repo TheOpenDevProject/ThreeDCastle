@@ -34,9 +34,10 @@ export default class GithubAPICard extends Component {
                     <span className="user">
                         <span className="action-username"><label>{this.state.displayData.userInfo.display_login}</label></span>
                     </span>
-                    <span className="action-user-icon">
+                    <span className="action-link"><a href={this.state.displayData.actionLink}>{this.state.displayData.actionText}</a></span>
+                    {/*<span className="action-user-icon">
                         <img src={this.state.displayData.userInfo.avatar_url + ".jpg"} />
-                    </span>
+                    </span>*/}
                 </section>
 
             </div>

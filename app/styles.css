@@ -126,7 +126,7 @@ table {
         color: #fff; }
 
 .small-mdl-card {
-  width: 20em;
+  width: 35;
   height: 5em;
   background-color: #fff;
   padding: 0.5em;
@@ -149,6 +149,11 @@ table {
           line-height: 2;
           color: #fff;
           font-weight: 700; }
+    .small-mdl-card .rhs-flex .action-link {
+      margin-top: 0.4em; }
+      .small-mdl-card .rhs-flex .action-link a {
+        text-decoration: none;
+        color: rgba(0, 0, 0, 0.4); }
     .small-mdl-card .rhs-flex .action-user-icon img {
       width: 25px;
       height: 25px;
