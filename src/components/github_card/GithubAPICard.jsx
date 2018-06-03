@@ -28,8 +28,8 @@ export default class GithubAPICard extends Component {
         /**
          * Do initial API request and then every N seconds after
          */
-        this.pollServiceEvent();
-        this.serviceWorker = setInterval(this.pollServiceEvent, 60000)
+        this.pollServiceEvent(this.props.resultsPerPage);
+        this.serviceWorker = setInterval(this.pollServiceEvent, this.props.updateInterval,this.props.resultsPerPage)
     }
 
     render() {
