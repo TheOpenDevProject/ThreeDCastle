@@ -6,21 +6,30 @@ export default class GithubAPICard extends Component {
 
     constructor(props) {
         super(props);
+        this.gitApi = new GitHubApi();
+        this.gitTransformer = new GitApiParser();
+        this.pollServiceEvent = this.pollServiceEvent.bind(this);
         this.state = { displayData: GitApiParser.getDefaults() };
     }
 
-    componentDidMount() {
-        const gitApi = new GitHubApi();
-        const gitTransformer = new GitApiParser();
 
-        gitApi.activity.getEventsForUserPublic({
+    pollServiceEvent(resultsPerPage = 1){
+        this.gitApi.activity.getEventsForUserPublic({
             username: "TheOpenDevProject",
-            per_page: 100
+            per_page: resultsPerPage
         }).then((result, error) => {
             console.log(result);
-            const final = gitTransformer.transform(result);
+            const final = this.gitTransformer.transform(result);
             this.setState({ displayData: final });
         })
+    }
+
+    componentDidMount() {
+        /**
+         * Do initial API request and then every N seconds after
+         */
+        this.pollServiceEvent();
+        this.serviceWorker = setInterval(this.pollServiceEvent, 60000)
     }
 
     render() {
@@ -35,6 +44,7 @@ export default class GithubAPICard extends Component {
                         <span className="action-username"><label>{this.state.displayData.userInfo.display_login}</label></span>
                     </span>
                     <span className="action-link"><a href={this.state.displayData.actionLink}>{this.state.displayData.actionText}</a></span>
+                    <span className="action-aditional-text">{this.state.displayData.aditionalText}</span>
                     {/*<span className="action-user-icon">
                         <img src={this.state.displayData.userInfo.avatar_url + ".jpg"} />
                     </span>*/}

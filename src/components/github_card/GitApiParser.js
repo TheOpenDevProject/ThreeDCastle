@@ -5,7 +5,15 @@ class GitApiParser {
     }
 
     processorForIssueEvent(data) {
-
+        const eventData = {
+            type: data.type,
+            currentIssueLabel: `${data.payload.action === "opened" ? "Issue Opened" : "Issue Closed"}`,
+            currentIcon: `${data.payload.action === "opened" ? "fas fa-exclamation-circle" : "far fa-times-circle"}`,
+            actionLink: `${data.payload.issue.html_url}`,
+            actionText: `${data.repo.name} // ${data.payload.issue.title}`,
+            aditionalText: `Timestamp: ${data.created_at}`
+        };
+        return eventData;
     }
 
     processorForPushEvent(data) {
@@ -14,7 +22,8 @@ class GitApiParser {
             currentIssueLabel: "New Commit",
             currentIcon: "fas fa-arrow-up",
             actionLink: `https://github.com/${data.repo.name}/commit/#${data.payload.head}`,
-            actionText: `${data.repo.name} => #${data.payload.head.slice(0,5)}`
+            actionText: `Pushed: ${data.repo.name} => #${data.payload.head.slice(0,5)} :: Branch => ${data.payload.ref}`,
+            aditionalText: `Timestamp: ${data.created_at}`
         };
         return eventData;
     }

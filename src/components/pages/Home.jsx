@@ -16,7 +16,7 @@ export default class Home extends Component {
 
     render() {
         return ([<div className="card-container">
-            <GithubAPICard />
+            <GithubAPICard updateInterval={5000} resultsPerPage={1}/>
         </div>,
         <AnimatedTyper debugMode={false} Message="Did the universe start with a Hello World?" />,
         <HomeBackground />]);

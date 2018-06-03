@@ -126,10 +126,9 @@ table {
         color: #fff; }
 
 .small-mdl-card {
-  width: 35;
-  height: 5em;
+  width: 35em;
   background-color: #fff;
-  padding: 0.5em;
+  padding: 1em;
   display: flex; }
   .small-mdl-card .rhs-flex {
     flex: 1 auto;
@@ -154,6 +153,8 @@ table {
       .small-mdl-card .rhs-flex .action-link a {
         text-decoration: none;
         color: rgba(0, 0, 0, 0.4); }
+    .small-mdl-card .rhs-flex .action-aditional-text {
+      margin-top: 0.3em; }
     .small-mdl-card .rhs-flex .action-user-icon img {
       width: 25px;
       height: 25px;
@@ -165,9 +166,14 @@ table {
     border-right-style: solid;
     border-right-color: rgba(0, 0, 0, 0.2);
     border-right-width: 1px;
-    flex-direction: column; }
-    .small-mdl-card .lhs-flex .fas {
+    flex-direction: column;
+    padding-right: 1em; }
+    .small-mdl-card .lhs-flex .fas, .small-mdl-card .lhs-flex .far {
       font-size: 4em; }
+    .small-mdl-card .lhs-flex .fa-exclamation-circle {
+      color: #70bf11; }
+    .small-mdl-card .lhs-flex .fa-times-circle {
+      color: #bf1010; }
     .small-mdl-card .lhs-flex .action-type-label {
       margin-top: 0.3em; }
       .small-mdl-card .lhs-flex .action-type-label label {
