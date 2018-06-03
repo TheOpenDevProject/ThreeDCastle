@@ -61,7 +61,7 @@ table {
   flex-direction: row-reverse;
   width: 100%;
   justify-content: center;
-  margin-top: 25em; }
+  margin-top: 5em; }
 
 .blinking-cursor {
   font-weight: 100;
@@ -127,6 +127,7 @@ table {
 
 .small-mdl-card {
   width: 35em;
+  margin-top: 15em;
   background-color: #fff;
   padding: 1em;
   display: flex; }

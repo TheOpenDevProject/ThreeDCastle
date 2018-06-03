@@ -15,7 +15,7 @@ export default class GithubAPICard extends Component {
 
     pollServiceEvent(resultsPerPage = 1){
         this.gitApi.activity.getEventsForUserPublic({
-            username: "TheOpenDevProject",
+            username: this.props.forUser,
             per_page: resultsPerPage
         }).then((result, error) => {
             console.log(result);
