@@ -1,5 +1,6 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const devMode = process.env.NODE_ENV !== "production";
 const webpack = require('webpack');
 module.exports = {
@@ -30,11 +31,11 @@ module.exports = {
           options: {
             // Limit at 50k. Above that it emits separate files
             limit: 50000,
-      
+
             // url-loader sets mimetype if it's passed.
             // Without this it derives it from the file extension
             mimetype: "application/font-woff",
-      
+
             // Output below fonts directory
             name: "./webfonts/[name].[ext]",
           }
@@ -47,6 +48,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name].css"
     }),
-    new webpack.IgnorePlugin(/locale/, /moment$/)
+    new webpack.IgnorePlugin(/locale/, /moment$/),
   ]
 };
