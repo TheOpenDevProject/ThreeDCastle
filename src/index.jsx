@@ -9,7 +9,9 @@ import {
 //Custom React Components
 import Home from "./components/pages/Home.jsx";
 import ContactMe from "./components/pages/ContactMe.jsx";
+import AboutMe from './components/pages/AboutMe.jsx';
 import StaticMenuBar from "./components/StaticMenuBar.jsx";
+
 /**
  * Main React Entry Pint
  */
@@ -18,20 +20,20 @@ class App extends React.Component {
     return (
       <div className="stage">
         <div className="full-width-flex" id="home-container">
-        <StaticMenuBar navLinks={[
-                    {hashref: "/", text: "Home"},
-                    {hashref: "/my-work", text: "My Work"},
-                    {hashref: "/ytwall", text: "My YouTube"},
-                    {hashref: "/contact", text: "Contact Me"},
-                    {hashref: "/about-me", text: "About Me"},
-                ]}/>
+          <StaticMenuBar navLinks={[
+            { hashref: "/", text: "Home", key: 1 },
+            { hashref: "/my-work", text: "My Work", key: 2 },
+            { hashref: "/ytwall", text: "My YouTube", key: 3 },
+            { hashref: "/contact", text: "Contact Me", key: 4 },
+            { hashref: "/about-me", text: "About Me", key: 5 },
+          ]} />
 
           <Router>
             <Switch>
 
               <Route exact path="/" component={Home} />
               <Route exact path="/contact" component={ContactMe} />
-
+              <Route exact path="/about-me" component={AboutMe} />
             </Switch>
           </Router>
 

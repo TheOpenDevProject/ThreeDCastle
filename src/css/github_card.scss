@@ -1,0 +1,75 @@
+.small-mdl-card {
+    width: 35em;
+    margin-top: 15em;
+    background-color: #fff;
+    padding: 1em;
+    display: flex;
+    .rhs-flex {
+        flex: 1 auto;
+        display: flex;
+        font-family: "Roboto";
+        flex-direction: column;
+        margin-left: 0.3em;
+        .user {
+            display: flex;
+            background-color: #f46b42;
+            width: 100%;
+            height: 35px;
+            justify-content: center;
+            .action-username {
+                margin-left: 0.3em;
+                label {
+                    line-height: 2;
+                    color: #fff;
+                    font-weight: 700;
+                }
+            }
+        }
+        .action-link {
+            margin-top:0.4em;
+            a {
+                text-decoration: none;
+                color: rgba($color: #000000, $alpha: 0.4)
+            }
+        }
+
+        .action-aditional-text{
+            margin-top:0.3em;
+        }
+
+        .action-user-icon {
+            img {
+                width: 25px;
+                height: 25px;
+                border-radius: 5px;
+            }
+        }
+    }
+    .lhs-flex {
+        flex: 1 auto;
+        text-align: center;
+        display: flex;
+        border-right-style: solid;
+        border-right-color: rgba($color: #000000, $alpha: 0.2);
+        border-right-width: 1px;
+        flex-direction: column;
+        padding-right:1em;
+        .fas, .far, .fab {
+            font-size: 4em;
+        }
+        .fa-exclamation-circle{
+            color: #70bf11;
+        }
+
+        .fa-times-circle{
+            color:#bf1010;
+        }
+        .action-type-label {
+            margin-top: 0.3em;
+            label {
+                font-family: "Roboto";
+                font-weight: 400;
+            }
+        }
+    }
+}

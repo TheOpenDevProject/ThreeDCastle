@@ -9,7 +9,7 @@ export default class StaticMenuBar extends Component {
     }
     render() {
         const listItems = this.state.navLinks.map((item) => {
-           return <li onClick={() => {
+           return <li key={item.hashref} onClick={() => {
                window.location.hash = item.hashref;
            }}>{item.text}</li>
         });
