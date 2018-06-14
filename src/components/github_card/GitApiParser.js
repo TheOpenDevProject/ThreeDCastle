@@ -33,7 +33,17 @@ class GitApiParser {
     }
 
     processForUnknownEvent() {
+        const eventData = {
+            type: "Unknown",
+            currentIssueLabel: "Sp00ky",
+            currentIcon: "fab fa-snapchat-ghost",
+            actionLink: `#`,
+            actionText: `The ghost of the internetz tried to process this request but failed.`,
+            aditionalText: `No one ever explaained to muuueee how to process this API request :(`
 
+        };
+
+        return eventData;
     }
     processForType(data) {
         switch (data.type) {

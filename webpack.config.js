@@ -13,7 +13,28 @@ module.exports = {
     path: path.resolve("app"),
     filename: "[name].js"
   },
-
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+      minSize: 30000,
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      automaticNameDelimiter: '~',
+      name: true,
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    }
+  },
   module: {
     rules: [{
         test: /\.jsx$/,
@@ -24,23 +45,20 @@ module.exports = {
         use: ["style-loader", MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
       },
       {
-        // Match woff2 in addition to patterns like .woff?v=1.1.1.
-        test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-        use: {
-          loader: "url-loader",
-          options: {
-            // Limit at 50k. Above that it emits separate files
-            limit: 50000,
-
-            // url-loader sets mimetype if it's passed.
-            // Without this it derives it from the file extension
-            mimetype: "application/font-woff",
-
-            // Output below fonts directory
-            name: "./webfonts/[name].[ext]",
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                progressive: true,
+                quality: 30
+              }
+            }
           }
-        },
-      },
+        ]
+      }
 
     ]
   },
