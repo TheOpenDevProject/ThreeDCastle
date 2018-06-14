@@ -1,0 +1,56 @@
+@mixin titeBarHelper($bgColor, $color, $shadowLevel, $fontWeight, $fontFamily, $fontSize, $borderRadius) {
+    //Setup some defaults
+    background-color: $bgColor;
+    color: $color;
+    font-family: $fontFamily;
+    border-radius: $borderRadius;
+    font-weight: $fontWeight;
+    font-size: $fontSize; //End Defaults
+    @if $shadowLevel==1 {
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    }
+    @else if $shadowLevel==2 {
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    }
+    border-radius: $borderRadius; //Generated flexible elements
+    .__flex--container {
+        display: flex;
+        flex-direction: row;
+        .__flex--segment {
+            flex: 1 auto;
+            display: flex;
+            &.start {
+                justify-content: flex-start;
+            } //Center Element
+            &.center {
+                justify-content: center;
+            } //End Element
+            &.end {
+                justify-content: flex-end;
+            }
+        }
+    }
+}
+
+@mixin titleBarButtonHelper($bgColor, $color, $enableHover: true,$hoverRules: null, $optionalStyles: null) {
+    button {
+        background-color: $bgColor;
+        color: $color; 
+
+        @if $enableHover{
+            &:hover{
+                @each $hoverRuleMapping in $hoverRules {
+                    #{map-get($hoverRuleMapping, key)}: #{map-get($hoverRuleMapping,value)};
+                }    
+            }
+        }
+
+
+        //A kind of fake DI for SCSS that allows custom rules
+        @if $optionalStyles {
+            @each $ruleMapping in $optionalStyles {
+                #{map-get($ruleMapping, key)}: #{map-get($ruleMapping,value)};
+            }
+        }
+    }
+}

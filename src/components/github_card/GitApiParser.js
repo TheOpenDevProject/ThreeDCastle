@@ -51,7 +51,7 @@ class GitApiParser {
                 return this.processorForPushEvent(data);
             case ("IssuesEvent"):
                 return this.processorForIssueEvent(data);
-            case ("CreateEvent"):
+            case ("CreateEventBREAKME"):
                 return this.processForCreateEvent(data);
             default:
                 return this.processForUnknownEvent();

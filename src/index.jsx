@@ -10,7 +10,9 @@ import {
 import Home from "./components/pages/Home.jsx";
 import ContactMe from "./components/pages/ContactMe.jsx";
 import AboutMe from './components/pages/AboutMe.jsx';
+import ReactComponents from './components/pages/ReactComponents.jsx';
 import StaticMenuBar from "./components/StaticMenuBar.jsx";
+
 
 /**
  * Main React Entry Pint
@@ -26,6 +28,7 @@ class App extends React.Component {
             { hashref: "/ytwall", text: "My YouTube", key: 3 },
             { hashref: "/contact", text: "Contact Me", key: 4 },
             { hashref: "/about-me", text: "About Me", key: 5 },
+            { hashref: "/react-components", text: "React Components", key: 6 }
           ]} />
 
           <Router>
@@ -34,6 +37,7 @@ class App extends React.Component {
               <Route exact path="/" component={Home} />
               <Route exact path="/contact" component={ContactMe} />
               <Route exact path="/about-me" component={AboutMe} />
+              <Route exact path="/react-components" component={ReactComponents} />
             </Switch>
           </Router>
 

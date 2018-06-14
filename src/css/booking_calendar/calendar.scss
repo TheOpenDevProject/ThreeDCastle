@@ -1,0 +1,8 @@
+@import "./titlebar.scss";
+.calendar-title {
+    padding: 1em;
+    width: 50%;
+    margin: 2em auto;
+    @include titeBarHelper(#4286f4, #fff, 1, bold, "Roboto", 2em, 2px);
+    @include titleBarButtonHelper(transparent, #fff, true, ((key: background-color, value:#fff), (key: color, value: #4286f4)), ( ( key: border-style, value: solid), (key: border-color, value: #fff)));
+}
