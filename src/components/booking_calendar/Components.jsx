@@ -22,3 +22,48 @@ export class CalendarTitleBar extends Component {
         )
     }
 }
+
+
+export class CalendarPageGroup extends Component{
+    constructor(props, ...children){
+        super(props, children);
+    }
+
+
+    render(){
+        return (this.props.children[0]);
+    }
+}
+
+export class CalendarPage extends Component{
+    constructor(props, ...children){
+        super(props,children);
+    }
+
+    render(){
+        return (<div className="__calendar-page-group">{this.props.children}</div>);
+    }
+}
+
+export class CalendarDayBox extends Component{
+    constructor(props, ...children){
+        super(props, children);
+        this.state = {
+           currentStateStyleClass: "active" 
+
+        }
+    }
+
+    componentDidMount(){
+
+    }
+
+
+    render(){
+        return(
+            <div className={this.props.baseStyleClass + " " + this.state.currentStateStyleClass}>
+                <span className="__date-header">1</span>
+            </div>
+        );
+    }
+}

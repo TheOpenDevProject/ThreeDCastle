@@ -182,7 +182,7 @@ table {
         font-weight: 400; }
 
 .space-container {
-  background-image: url(e7ca7b0fadc65070f9021207ebff7782.jpg);
+  background-image: url(97b5bfc269c378db304c793acdfe8216.jpg);
   padding-top: 25em;
   background-position: center; }
 
@@ -214,10 +214,45 @@ table {
     .material-hp-container span h3 {
       font-size: 2em; }
 
+.__calendar-page-group {
+  display: flex;
+  flex-wrap: wrap; }
+  .__calendar-page-group .__row {
+    display: flex;
+    width: 100%; }
+    .__calendar-page-group .__row .calendar--day-box {
+      flex: 1 auto;
+      border-right-style: solid;
+      border-right-color: #d8d8d8;
+      border-right-width: 1px;
+      border-bottom-style: solid;
+      border-bottom-color: #d8d8d8;
+      border-bottom-width: 1px;
+      height: 200px;
+      max-width: 200px; }
+      .__calendar-page-group .__row .calendar--day-box:first-of-type {
+        border-left-style: solid;
+        border-left-color: #d8d8d8;
+        border-left-width: 1px; }
+      .__calendar-page-group .__row .calendar--day-box:hover {
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        -webkit-transition: all 0.5s ease-in-out;
+        -moz-transition: all 0.5s ease-in-out;
+        -ms-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out; }
+
+/*
+###################
+# Custom DI Rules #
+###################
+*/
+.calendar {
+  width: 50%;
+  margin: 2em auto; }
+
 .calendar-title {
   padding: 1em;
-  width: 50%;
-  margin: 2em auto;
   background-color: #4286f4;
   color: #fff;
   font-family: "Roboto";
