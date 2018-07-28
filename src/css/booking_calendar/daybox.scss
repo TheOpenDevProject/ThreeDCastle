@@ -1,0 +1,36 @@
+@mixin border-mixin($width, $style, $color) {
+    border-right-style: $style;
+    border-right-color: $color;
+    border-right-width: $width;
+    border-bottom-style: $style;
+    border-bottom-color: $color;
+    border-bottom-width: $width;
+    &:first-of-type {
+        border-left-style: $style;
+        border-left-color: $color;
+        border-left-width: $width;
+    }
+}
+
+.__calendar-page-group {
+    display: flex;
+    flex-wrap: wrap;
+    .__row {
+        display: flex;
+        width: 100%;
+        .calendar--day-box {
+            flex: 1 auto;
+            @include border-mixin(1px, solid, rgb(216, 216, 216));
+            height: 200px;
+            max-width: 200px;
+            &:hover {
+                box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+                -webkit-transition: all 0.5s ease-in-out;
+                -moz-transition: all 0.5s ease-in-out;
+                -ms-transition: all 0.5s ease-in-out;
+                -o-transition: all 0.5s ease-in-out;
+                transition: all 0.5s ease-in-out;
+            }
+        }
+    }
+}
