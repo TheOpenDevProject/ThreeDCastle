@@ -1,0 +1,13 @@
+---
+  - 
+    name: "npm install"
+    service: "node"
+    command: "npm install"
+  - 
+    name: "install webpack globally"
+    service: "node"
+    command: "npm install webpack -g"
+  - 
+    name: "Run Webpack Build"
+    service: "node"
+    command: "webpack -p"
