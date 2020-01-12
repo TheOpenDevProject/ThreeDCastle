@@ -45,7 +45,7 @@
     "serve-static": "^1.13.2",
     "style-loader": "^0.21.0",
     "webpack": "^4.8.3",
-    "webpack-bundle-analyzer": "^2.13.1",
+    "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^2.1.4"
   },
   "author": "Jesse Bud",
